@@ -44,7 +44,7 @@ const productos = [{
         id: 8,
         foto: "../imagenes/iphone12.jpg",
         nombre: "Iphone 12 pro max",
-        precio: 1800
+        precio: 2500
     },
     {
         id: 9,
@@ -54,7 +54,7 @@ const productos = [{
     },
     {
         id: 10,
-        foto: "../imagenes/parlante.jpg",
+        foto: "../imagenes/mouse.jpg",
         nombre: "Mouse Halion inalambrico",
         precio: 50
     },
