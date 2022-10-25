@@ -36,19 +36,19 @@ const productos = [{
     },
     {
         id: 7,
-        foto: "../imagenes/all-in-one.jpg",
+        foto: "../imagenes/m.2.jpg",
         nombre: "m.2 480GB",
         precio: 180
     },
     {
         id: 8,
-        foto: "../imagenes/laptop.jpg",
+        foto: "../imagenes/iphone12.jpg",
         nombre: "Iphone 12 pro max",
         precio: 1800
     },
     {
         id: 9,
-        foto: "../imagenes/monitor.jpg",
+        foto: "../imagenes/fuente.png",
         nombre: "Fuente para pc",
         precio: 250
     },
