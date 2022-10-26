@@ -71,3 +71,31 @@ const productos = [{
         precio: 170
     },
 ];
+const productosStorage = [{ id: 1,  producto: "All in One", precio: 1500 },
+                  {  id: 2,  producto: "Laptop lenovo", precio: 1800 },
+                  {  id: 3,  producto: "Monitor Gigabyte"  , precio: 2000},
+                  {  id: 4,  producto: "Parlante Logitech" , precio: 100}];
+
+const guardarLocal = (clave, valor) => { localStorage.setItem(clave, valor) };
+guardarLocal("listaProductos", JSON.stringify(productos));
+
+class Producto {
+    constructor(obj) {
+        this.nombre  = obj.producto.toUpperCase();
+        this.precio  = parseFloat(obj.precio);
+    }
+    sumaIva() {
+        this.precio = this.precio * 1.21;
+    }
+}
+//Obtenemos el listado de productos almacenado
+const almacenados = JSON.parse(localStorage.getItem("listaProductos"));
+const productos2 = [];
+//Iteramos almacenados con for...of para transformar todos sus objetos a tipo producto.
+for (const objeto of almacenados)
+    productos2.push(new Producto(objeto));
+//Ahora tenemos objetos productos y podemos usar sus métodos
+for (const producto of productos2)
+    producto.sumaIva();
+
+console.log(productos2);
