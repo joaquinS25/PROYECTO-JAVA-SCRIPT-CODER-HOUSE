@@ -77,12 +77,12 @@ const productosStorage = [{ id: 1,  producto: "All in One", precio: 1500 },
                   {  id: 4,  producto: "Parlante Logitech" , precio: 100}];
 
 const guardarLocal = (clave, valor) => { localStorage.setItem(clave, valor) };
-guardarLocal("listaProductos", JSON.stringify(productos));
+guardarLocal("listaProductos", JSON.stringify(productosStorage));
 
 class Producto {
     constructor(obj) {
         this.nombre  = obj.producto.toUpperCase();
-        this.precio  = parseFloat(obj.precio);
+        this.precio  = obj.precio;
     }
     sumaIva() {
         this.precio = this.precio * 1.21;
