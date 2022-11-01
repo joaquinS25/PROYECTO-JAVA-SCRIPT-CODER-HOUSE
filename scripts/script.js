@@ -16,6 +16,8 @@ function dibujarTabla(){
             <td>${producto.id}</td>
             <td>${producto.nombre}</td>
             <td>${producto.precio}</td>
+            <td>${producto.cantidad}</td>
+            <td>${producto.totalPagar}</td>
         </tr>
     `;
     }
@@ -32,6 +34,7 @@ function renderizarProds() {
                     <h5 class="card-title">${producto.id}</h5>
                     <p class="card-text">${producto.nombre}</p>
                     <p class="card-text">S/. ${producto.precio}</p>
+                    <p class="card-text">Stock: ${producto.cantidad}</p>
                     <button id="btn${producto.id}" class="btn btn-primary">Comprar</button>         
                 </div>
             </div>
@@ -50,6 +53,7 @@ function renderizarProds() {
 renderizarProds();
 
 function agregarAlCarrito(productoComprado) {
+    let cantidad_nueva = prompt("Cuantos unidades desea? ");
     carrito.push(productoComprado);
     console.table(carrito);
     //alert("Producto: "+productoComprado.nombre+" agregado al carrito!");
@@ -68,6 +72,8 @@ function agregarAlCarrito(productoComprado) {
             <td>${productoComprado.id}</td>
             <td>${productoComprado.nombre}</td>
             <td>${productoComprado.precio}</td>
+            <td>${productoComprado.cantidad_nueva}</td>
+            <td>${productoComprado.totalPagar}</td>
             <td><button><i class="bi bi-trash3-fill"></i></button> </td>
         </tr>
     `;

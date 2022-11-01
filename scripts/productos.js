@@ -2,79 +2,91 @@ const productos = [{
         id: 1,
         foto: "../imagenes/all-in-one.jpg",
         nombre: "All in One",
-        precio: 1500
+        precio: 1500,
+        cantidad: 10
     },
     {
         id: 2,
         foto: "../imagenes/laptop.jpg",
         nombre: "Laptop lenovo",
-        precio: 1800
+        precio: 1800,
+        cantidad: 20
     },
     {
         id: 3,
         foto: "../imagenes/monitor.jpg",
         nombre: "Monitor Gigabyte",
-        precio: 2000
+        precio: 2000,
+        cantidad: 15
     },
     {
         id: 4,
         foto: "../imagenes/parlante.jpg",
         nombre: "Parlante Logitech",
-        precio: 100
+        precio: 100,
+        cantidad: 20
     },
     {
         id: 5,
         foto: "../imagenes/teclado_mouse.jfif",
         nombre: "Teclado y Mouse",
-        precio: 80
+        precio: 80,
+        cantidad: 30
     },
     {
         id: 6,
         foto: "../imagenes/disco_solido.jpg",
         nombre: "Disco solido 480gb",
-        precio: 170
+        precio: 170,
+        cantidad: 20
     },
     {
         id: 7,
         foto: "../imagenes/m.2.jpg",
         nombre: "m.2 480GB",
-        precio: 180
+        precio: 180,
+        cantidad: 15
     },
     {
         id: 8,
         foto: "../imagenes/iphone12.jpg",
         nombre: "Iphone 12 pro max",
-        precio: 2500
+        precio: 2500,
+        cantidad: 20
     },
     {
         id: 9,
         foto: "../imagenes/fuente.png",
         nombre: "Fuente para pc",
-        precio: 250
+        precio: 250,
+        cantidad: 35
     },
     {
         id: 10,
         foto: "../imagenes/mouse.jpg",
         nombre: "Mouse Halion inalambrico",
-        precio: 50
+        precio: 50,
+        cantidad: 15
     },
     {
         id: 11,
         foto: "../imagenes/teclado_mouse.jfif",
         nombre: "Teclado y Mouse",
-        precio: 80
+        precio: 80,
+        cantidad: 10
     },
     {
         id: 12,
         foto: "../imagenes/disco_solido.jpg",
         nombre: "Disco solido 480gb",
-        precio: 170
+        precio: 170,
+        cantidad: 20
     },
 ];
-const productosStorage = [{ id: 1,  producto: "All in One", precio: 1500 },
-                  {  id: 2,  producto: "Laptop lenovo", precio: 1800 },
-                  {  id: 3,  producto: "Monitor Gigabyte"  , precio: 2000},
-                  {  id: 4,  producto: "Parlante Logitech" , precio: 100}];
+const productosStorage = [{ id: 1,  producto: "All in One", precio: 1500,cantidad: 35 },
+                  {  id: 2,  producto: "Laptop lenovo", precio: 1800,cantidad: 15 },
+                  {  id: 3,  producto: "Monitor Gigabyte"  , precio: 2000,cantidad: 20},
+                  {  id: 4,  producto: "Parlante Logitech" , precio: 100,cantidad: 35}];
 
 const guardarLocal = (clave, valor) => { localStorage.setItem(clave, valor) };
 guardarLocal("listaProductos", JSON.stringify(productosStorage));
