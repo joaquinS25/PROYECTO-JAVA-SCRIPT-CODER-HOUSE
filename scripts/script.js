@@ -55,7 +55,6 @@ renderizarProds();
 function agregarAlCarrito(productoComprado) {
     
     carrito.push(productoComprado);
-    productoComprado.cantidad--
     console.table(carrito);
     Swal.fire({
         title: productoComprado.nombre,
@@ -76,6 +75,7 @@ function agregarAlCarrito(productoComprado) {
         </tr>
     `;
     productoComprado.cantidad--;
+    console.log("QUEDAN "+productoComprado.cantidad);
     totalCarrito = carrito.reduce((acumulador, producto) => acumulador + producto.precio, 0);
     let infoTotal = document.getElementById("total");
     infoTotal.innerText = "Total a pagar S/.: " + totalCarrito;
@@ -103,7 +103,11 @@ botonFinalizar.onclick = () => {
     localStorage.removeItem("carrito"); 
 }
 
+/*function calcularCantidad(){
+    if(carrito = ""){
 
+    }
+}*/
 
 
 
