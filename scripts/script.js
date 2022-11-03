@@ -53,10 +53,10 @@ function renderizarProds() {
 renderizarProds();
 
 function agregarAlCarrito(productoComprado) {
-    let cantidad_nueva = prompt("Cuantos unidades desea? ");
+    
     carrito.push(productoComprado);
+    productoComprado.cantidad--
     console.table(carrito);
-    //alert("Producto: "+productoComprado.nombre+" agregado al carrito!");
     Swal.fire({
         title: productoComprado.nombre,
         text: 'Agregado al carrito',
@@ -72,11 +72,10 @@ function agregarAlCarrito(productoComprado) {
             <td>${productoComprado.id}</td>
             <td>${productoComprado.nombre}</td>
             <td>${productoComprado.precio}</td>
-            <td>${productoComprado.cantidad_nueva}</td>
-            <td>${productoComprado.totalPagar}</td>
             <td><button><i class="bi bi-trash3-fill"></i></button> </td>
         </tr>
     `;
+    productoComprado.cantidad--;
     totalCarrito = carrito.reduce((acumulador, producto) => acumulador + producto.precio, 0);
     let infoTotal = document.getElementById("total");
     infoTotal.innerText = "Total a pagar S/.: " + totalCarrito;
