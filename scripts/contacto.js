@@ -4,6 +4,6 @@ document.getElementById('boton1').onclick = function(){
         icon: 'success',
         title: 'PRONTO NOS CONTACTAREMOS CON USTED',
         showConfirmButton: false,
-        timer: 4000
+        timer: 90000
       })
 }

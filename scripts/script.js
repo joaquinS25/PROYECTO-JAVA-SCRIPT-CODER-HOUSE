@@ -33,22 +33,18 @@ function renderizarProds(){
                 <div class="card-body">
                     <h5 class="card-title">${producto.id}</h5>
                     <p class="card-text">${producto.nombre}</p>
-                    <p class="card-text">U$D ${(producto.precio)}</p>
+                    <p class="card-text">S/.${(producto.precio)}</p>
                     <button id="btn${producto.id}" class="btn btn-primary">Comprar</button>
                 </div>
             </div>
         `;
     }
-
-    //EVENTOS
     productosJSON.forEach(producto => {
-        //evento para cada boton
         document.getElementById(`btn${producto.id}`).addEventListener("click",function(){
             agregarAlCarrito(producto);
         });
     })
 }
-
 function agregarAlCarrito(productoComprado){
     carrito.push(productoComprado);
     console.table(carrito);
@@ -67,17 +63,16 @@ function agregarAlCarrito(productoComprado){
             <td>${productoComprado.id}</td>
             <td>${productoComprado.nombre}</td>
             <td>${productoComprado.precio}</td>
-            <td><button class="btn btn-light" onclick="eliminar(event)">🗑️</button></td>
+            <td><button class="btn btn-danger" onclick="eliminar(event)"><i class="bi bi-trash3-fill"></i></button></td>
         </tr>
     `;
     totalCarrito = carrito.reduce((acumulador,producto)=> acumulador + producto.precio,0);
     let infoTotal = document.getElementById("total");
-    infoTotal.innerText="Total a pagar $: "+totalCarrito;
-    //storage
+    infoTotal.innerText="Total a pagar S/.: "+totalCarrito;
     localStorage.setItem("carrito",JSON.stringify(carrito));
 }
 
-//Para eliminar prods del carro
+//Para eliminar los productos agregados al carrito
 function eliminar(ev){
     console.log(ev);
     let fila = ev.target.parentElement.parentElement;
@@ -86,34 +81,34 @@ function eliminar(ev){
     console.log(id);
     let indice = carrito.findIndex(producto => producto.id == id);
     console.log(indice)
-    //remueve el producto del carro
+    //eliminar producto del carrito
     carrito.splice(indice,1);
     console.table(carrito);
-    //remueve la fila de la tabla
+    //Eliminar la fila de la tabla
     fila.remove();
-    //recalcular el total
+    //Una vez eliminado se tiene que volver a calcular el total a pagar
     let preciosAcumulados = carrito.reduce((acumulador,producto)=>acumulador+producto.precio,0);
-    total.innerText="Total a pagar $: "+preciosAcumulados;
+    total.innerText="Total a pagar S/. : "+preciosAcumulados;
     //storage
     localStorage.setItem("carrito",JSON.stringify(carrito));
 }
 
-//GETJSON de productos.json
+//Con esta funcion se va a aobtener los productos.json
 async function obtenerJSON() {
-    const URLJSON="/scripts/productos.json";
+    const URLJSON="../scripts/productos.json";
     const resp = await fetch(URLJSON);
     const data = await resp.json();
-    productosJSON = data;
-    //ya tengo el dolar y los productos, renderizo las cartas
+    productosJSON = data;   
     renderizarProds();
 }
+obtenerJSON()
 
 //Cerrando al compra
 botonFinalizar.onclick = () => {
     if(carrito.length==0){
         Swal.fire({
-            title: 'El carro está vacío',
-            text: 'compre algun producto',
+            title: 'CARRITO VACIO',
+            text: 'COMPRE ALGO, DE LO CONTRARIO PASE A LA SIGUIENTE PAGINA',
             icon: 'error',
             showConfirmButton: false,
             timer: 1500
@@ -124,7 +119,7 @@ botonFinalizar.onclick = () => {
         let infoTotal = document.getElementById("total");
         infoTotal.innerText="Total a pagar S/.: ";
         Toastify({
-            text: "Pronto recibirá un mail de confirmacion",
+            text: "En breves momentos recibira un email de confirmacion",
             duration: 3000,
             gravity: 'bottom',
             position: 'left',
@@ -136,5 +131,6 @@ botonFinalizar.onclick = () => {
        
         localStorage.removeItem("carrito");
     }
+    
 }
 
